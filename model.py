@@ -2,9 +2,9 @@ import whisper
 from pyannote.audio import Pipeline
 from utils import diarize_text
 
-def diarize(audio_path):
+def diarize(audio_path,token):
     pipeline = Pipeline.from_pretrained("pyannote/speaker-diarization",
-                                        use_auth_token="")
+                                        use_auth_token=token)
     model = whisper.load_model("tiny")
 
     asr_result = model.transcribe(audio_path)
